@@ -1,0 +1,26 @@
+nombre de la base: tp6
+nombre del usuario mysql: tp6
+contraseña del usuario: tp61000
+
+Creacion del usuario:
+	#iniciar como root 
+	> mysql -h localhost -u root -proot
+	
+	#crear usuario nuevo
+	> CREATE USER 'tp6'@'localhost' IDENTIFIED BY 'tp61000';
+	
+	#darle privilegios, darle todos los privilegios necesarios
+	> GRANT ALL PRIVILEGES ON * . * TO 'tp6'@'localhost';
+	
+	#actualiza / carga los privilegios cambios anteriormente
+	> FLUSH PRIVILEGES;
+
+Ingresar con el nuevo usuario
+	> mysql -h localhost -u tp6 -ptp61000
+
+	#crear base de datos para el proyecto
+	> create database tp6;
+	
+	#si al tratar de conectarse desde java tira un error del tipo: "ERROR: Cannot create PoolableConnectionFactory (Unable to load authentication plugin 'caching_sha2_password'.)"
+	#usar el siguiente comando para modificar al usuario
+	> ALTER USER 'tp6'@'localhost' IDENTIFIED WITH mysql_native_password BY 'tp61000';
