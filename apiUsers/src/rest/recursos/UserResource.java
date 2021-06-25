@@ -23,6 +23,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 import model.User;
 
+
 @Path("/user")
 public class UserResource {
 
