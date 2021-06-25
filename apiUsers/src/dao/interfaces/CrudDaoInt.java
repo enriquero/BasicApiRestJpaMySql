@@ -1,18 +1,21 @@
 package dao.interfaces;
 
+import java.io.Serializable;
 import java.util.List;
 import org.jvnet.hk2.annotations.Contract;
 
 @Contract
-public interface CrudDaoInt {
+public interface CrudDaoInt<T extends Serializable> {
 
-	<T> void create(T entity); // C
+	void create(final T entity); // C
 
-	<T> T get(Class<T> entityClass, Long id); // R
+	T get(final Long id); // R
+	
+	void update(final T entity); // U
 
-	<T> void update(T entity); // U
-
-	<T> void delete(T entity); // D
-
-	<T> List<T> getAll(Class<T> entityClass); // List
+	void delete(final T entity); // D
+	
+	List<T> findAll(); // List
+	
+	void setClazz(Class<T> clazzToSet);
 }
